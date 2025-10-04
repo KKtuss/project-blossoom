@@ -32,6 +32,22 @@ app.get('/config.js', (req, res) => {
     res.sendFile(path.join(__dirname, 'config.js'));
 });
 
+// Serve image files explicitly
+app.get('/blossompix.png', (req, res) => {
+    res.setHeader('Content-Type', 'image/png');
+    res.sendFile(path.join(__dirname, 'blossompix.png'));
+});
+
+app.get('/twitter button.png', (req, res) => {
+    res.setHeader('Content-Type', 'image/png');
+    res.sendFile(path.join(__dirname, 'twitter button.png'));
+});
+
+app.get('/Github button.png', (req, res) => {
+    res.setHeader('Content-Type', 'image/png');
+    res.sendFile(path.join(__dirname, 'Github button.png'));
+});
+
 // Serve the main HTML file
 app.get('/', (req, res) => {
     res.sendFile(path.join(__dirname, 'index.html'));

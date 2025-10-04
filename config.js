@@ -2,7 +2,7 @@
 // Get your API key at: https://console.anthropic.com/
 
 // Browser-compatible configuration
-const CLAUDE_API_KEY = 'YOUR_CLAUDE_API_KEY_HERE';
+const CLAUDE_API_KEY = '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';
 
 // Export for use in main script
 if (typeof module !== 'undefined' && module.exports) {
