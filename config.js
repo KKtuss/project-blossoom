@@ -1,8 +1,9 @@
 // Claude API Configuration
-// Get your API key at: https://console.anthropic.com/
+// API key is handled server-side for security
+// Client-side requests will use the server's API key automatically
 
 // Browser-compatible configuration
-const CLAUDE_API_KEY = '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';
+const CLAUDE_API_KEY = null; // API key is not needed on client-side
 
 // Export for use in main script
 if (typeof module !== 'undefined' && module.exports) {

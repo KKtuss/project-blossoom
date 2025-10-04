@@ -12,56 +12,23 @@ app.use(cors({
     credentials: true
 }));
 app.use(express.json({ limit: '10mb' }));
+// Serve static files with proper caching
 app.use(express.static(path.join(__dirname), {
-    maxAge: process.env.NODE_ENV === 'production' ? '1d' : '0'
+    maxAge: process.env.NODE_ENV === 'production' ? '1d' : '0',
+    setHeaders: (res, path) => {
+        // Set proper MIME types for specific files
+        if (path.endsWith('.css')) {
+            res.setHeader('Content-Type', 'text/css');
+        } else if (path.endsWith('.js')) {
+            res.setHeader('Content-Type', 'application/javascript');
+        } else if (path.endsWith('.png')) {
+            res.setHeader('Content-Type', 'image/png');
+        }
+    }
 }));
-
-// Serve static files explicitly with proper MIME types and cache busting
-app.get('/styles.css', (req, res) => {
-    res.setHeader('Content-Type', 'text/css');
-    res.setHeader('Cache-Control', 'no-cache, no-store, must-revalidate');
-    res.setHeader('Pragma', 'no-cache');
-    res.setHeader('Expires', '0');
-    res.sendFile(path.join(__dirname, 'styles.css'));
-});
-
-app.get('/script.js', (req, res) => {
-    res.setHeader('Content-Type', 'application/javascript');
-    res.setHeader('Cache-Control', 'no-cache, no-store, must-revalidate');
-    res.setHeader('Pragma', 'no-cache');
-    res.setHeader('Expires', '0');
-    res.sendFile(path.join(__dirname, 'script.js'));
-});
-
-app.get('/config.js', (req, res) => {
-    res.setHeader('Content-Type', 'application/javascript');
-    res.setHeader('Cache-Control', 'no-cache, no-store, must-revalidate');
-    res.setHeader('Pragma', 'no-cache');
-    res.setHeader('Expires', '0');
-    res.sendFile(path.join(__dirname, 'config.js'));
-});
-
-// Serve image files explicitly
-app.get('/blossompix.png', (req, res) => {
-    res.setHeader('Content-Type', 'image/png');
-    res.sendFile(path.join(__dirname, 'blossompix.png'));
-});
-
-app.get('/twitter button.png', (req, res) => {
-    res.setHeader('Content-Type', 'image/png');
-    res.sendFile(path.join(__dirname, 'twitter button.png'));
-});
-
-app.get('/Github button.png', (req, res) => {
-    res.setHeader('Content-Type', 'image/png');
-    res.sendFile(path.join(__dirname, 'Github button.png'));
-});
 
 // Serve the main HTML file
 app.get('/', (req, res) => {
-    res.setHeader('Cache-Control', 'no-cache, no-store, must-revalidate');
-    res.setHeader('Pragma', 'no-cache');
-    res.setHeader('Expires', '0');
     res.sendFile(path.join(__dirname, 'index.html'));
 });
 
