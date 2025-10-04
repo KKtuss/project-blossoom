@@ -1,5 +1,5 @@
-/* Import Google Fonts as fallback */
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
+/* Import Google Fonts */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap');
 
 :root {
     /* Simplified Blue/Purple Color Palette */
@@ -14,11 +14,11 @@
     --border-color: #666666;      /* Grey borders */
     --text-muted: #999999;        /* Muted text */
     
-    /* Font families - Using Inter as fallback */
-    --font-pixel: 'Inter', sans-serif;
-    --font-terminal: 'Inter', sans-serif;
-    --font-body: 'Inter', sans-serif;
-    --font-mono: 'Inter', monospace;
+    /* Font families - Using Poppins and JetBrains Mono */
+    --font-pixel: 'Poppins', sans-serif;
+    --font-terminal: 'Poppins', sans-serif;
+    --font-body: 'Poppins', sans-serif;
+    --font-mono: 'JetBrains Mono', monospace;
 }
 
 * {
@@ -117,7 +117,7 @@ body {
     letter-spacing: 1px;
     margin-bottom: 40px;
     line-height: 1.4;
-    opacity: 0;
+    opacity: 1;
     min-height: 5rem;
     display: flex;
     align-items: center;
@@ -139,7 +139,7 @@ body {
     letter-spacing: 2px;
     font-family: var(--font-terminal);
     box-shadow: 0 0 6px var(--accent-primary);
-    opacity: 0;
+    opacity: 1;
     animation: buttonPulse 3s ease-in-out infinite;
 }
 
@@ -153,6 +153,7 @@ body {
 .main-website {
     position: relative;
     z-index: 1;
+    display: block;
 }
 
 /* Intro Animations */
