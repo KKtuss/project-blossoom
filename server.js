@@ -29,8 +29,8 @@ app.post('/api/generate-art', async (req, res) => {
         const { prompt, apiKey } = req.body;
         
         // Use server-side API key if client doesn't provide one
-        const { CLAUDE_API_KEY } = require('./config.js');
-        const finalApiKey = apiKey && apiKey !== 'YOUR_CLAUDE_API_KEY_HERE' ? apiKey : CLAUDE_API_KEY;
+        const serverApiKey = process.env.CLAUDE_API_KEY || require('./config.js').CLAUDE_API_KEY;
+        const finalApiKey = apiKey && apiKey !== 'YOUR_CLAUDE_API_KEY_HERE' ? apiKey : serverApiKey;
         
         if (!finalApiKey || finalApiKey === 'YOUR_CLAUDE_API_KEY_HERE') {
             return res.status(400).json({ 
