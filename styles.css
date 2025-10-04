@@ -1,5 +1,5 @@
-/* Import local QuanSlim fonts */
-@import url('./Fonts/QuanSlim/stylesheet.css');
+/* Import Google Fonts as fallback */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
 
 :root {
     /* Simplified Blue/Purple Color Palette */
@@ -14,11 +14,11 @@
     --border-color: #666666;      /* Grey borders */
     --text-muted: #999999;        /* Muted text */
     
-    /* Font families - Using QuanSlim instead of pixelated fonts */
-    --font-pixel: 'Quan Slim', sans-serif;
-    --font-terminal: 'Quan Slim', sans-serif;
-    --font-body: 'Quan Slim', sans-serif;
-    --font-mono: 'Quan Slim', sans-serif;
+    /* Font families - Using Inter as fallback */
+    --font-pixel: 'Inter', sans-serif;
+    --font-terminal: 'Inter', sans-serif;
+    --font-body: 'Inter', sans-serif;
+    --font-mono: 'Inter', monospace;
 }
 
 * {
