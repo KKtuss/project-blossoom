@@ -12,20 +12,8 @@ app.use(cors({
     credentials: true
 }));
 app.use(express.json({ limit: '10mb' }));
-// Serve static files with proper caching
-app.use(express.static(path.join(__dirname), {
-    maxAge: process.env.NODE_ENV === 'production' ? '1d' : '0',
-    setHeaders: (res, path) => {
-        // Set proper MIME types for specific files
-        if (path.endsWith('.css')) {
-            res.setHeader('Content-Type', 'text/css');
-        } else if (path.endsWith('.js')) {
-            res.setHeader('Content-Type', 'application/javascript');
-        } else if (path.endsWith('.png')) {
-            res.setHeader('Content-Type', 'image/png');
-        }
-    }
-}));
+// Serve static files
+app.use(express.static(path.join(__dirname)));
 
 // Serve the main HTML file
 app.get('/', (req, res) => {
