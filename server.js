@@ -8,13 +8,29 @@ const PORT = process.env.PORT || 3001;
 
 // Middleware
 app.use(cors({
-    origin: process.env.NODE_ENV === 'production' ? false : true,
+    origin: true,
     credentials: true
 }));
 app.use(express.json({ limit: '10mb' }));
 app.use(express.static(path.join(__dirname), {
     maxAge: process.env.NODE_ENV === 'production' ? '1d' : '0'
 }));
+
+// Serve static files explicitly with proper MIME types
+app.get('/styles.css', (req, res) => {
+    res.setHeader('Content-Type', 'text/css');
+    res.sendFile(path.join(__dirname, 'styles.css'));
+});
+
+app.get('/script.js', (req, res) => {
+    res.setHeader('Content-Type', 'application/javascript');
+    res.sendFile(path.join(__dirname, 'script.js'));
+});
+
+app.get('/config.js', (req, res) => {
+    res.setHeader('Content-Type', 'application/javascript');
+    res.sendFile(path.join(__dirname, 'config.js'));
+});
 
 // Serve the main HTML file
 app.get('/', (req, res) => {
